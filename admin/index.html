@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang quản trị | RattaTea Studio</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FF7AA2',
+                        warm: '#FFF6F8'
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'ui-sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-warm font-sans">
+    <!-- 🔑 WRAPPER CHUẨN MOBILE -->
+    <div class="flex flex-col min-h-[100dvh]">
+
+        <!-- ===== MOBILE HEADER ===== -->
+        <header class="md:hidden bg-primary text-white px-4 py-3 flex items-center justify-between sticky top-0 z-30">
+            <div class="flex items-center gap-3">
+                <img src="assets/images/logo.jpg" class="w-10 h-10 rounded-full border-2 border-white p-1">
+                <div class="text-sm leading-tight">
+                    <div class="opacity-90">Xin chào,</div>
+                    <div class="font-semibold">Admin</div>
+                </div>
+            </div>
+
+            <button id="mobileNavToggle" class="w-10 h-10 flex items-center justify-center rounded-full bg-white/20">
+                <i class="fa fa-bars text-lg"></i>
+            </button>
+        </header>
+
+        <!-- ===== OVERLAY ===== -->
+        <div id="mobileNavOverlay" class="fixed inset-0 bg-black/40 z-40 hidden"></div>
+
+        <!-- ===== MOBILE SIDEBAR ===== -->
+        <aside id="mobileNav" class="fixed top-0 right-0 h-full w-[80%] max-w-xs bg-white z-50
+            translate-x-full transition-transform duration-300 ease-in-out
+            shadow-xl flex flex-col">
+
+            <!-- Sidebar Header -->
+            <div class="h-16 px-4 flex items-center justify-between border-b">
+                <span class="font-semibold text-primary">RattaTea Studio</span>
+                <button id="mobileNavClose" class="w-9 h-9 flex items-center justify-center rounded-full bg-gray-100">
+                    <i class="fa fa-times"></i>
+                </button>
+            </div>
+
+            <!-- Nav -->
+            <nav class="flex flex-col px-3 py-4 gap-1 text-sm">
+                <!-- Item --> 
+                <a href="index.html" class="group flex items-center gap-3 px-4 py-3 rounded-xl bg-primary/10 text-primary font-semibold">
+                    <span class="w-9 h-9 rounded-lg bg-primary/20 flex items-center justify-center">
+                        <i class="fa fa-chart-line text-base"></i> 
+                    </span> 
+                    <span>Trang Chính</span> 
+                </a> 
+                <!-- Item -->
+                <a href="categorys/index.html" class="group flex items-center gap-3 px-4 py-3 rounded-xl text-gray-700 hover:bg-gray-100 transition">
+                    <span class="w-9 h-9 rounded-lg bg-gray-100 group-hover:bg-primary/10 flex items-center justify-center transition">
+                        <i class="fa fa-receipt text-base text-gray-500 group-hover:text-primary"></i> 
+                    </span>
+                    <span>Loại Sản Phẩm</span> 
+                </a> 
+                <!-- Item --> 
+                 <a href="products/index.html" class="group flex items-center gap-3 px-4 py-3 rounded-xl text-gray-700 hover:bg-gray-100 transition">
+                    <span class="w-9 h-9 rounded-lg bg-gray-100 group-hover:bg-blue-100 flex items-center justify-center transition">
+                        <i class="fa fa-box text-base text-gray-500 group-hover:text-blue-500"></i> 
+                    </span> 
+                    <span>Sản phẩm</span> 
+                </a> 
+                <!-- Item --> 
+                <a href="#" class="group flex items-center gap-3 px-4 py-3 rounded-xl text-gray-700 hover:bg-gray-100 transition">
+                    <span class="w-9 h-9 rounded-lg bg-gray-100 group-hover:bg-purple-100 flex items-center justify-center transition">
+                        <i class="fa fa-users text-base text-gray-500 group-hover:text-purple-500"></i> 
+                    </span>
+                    <span>Người Dùng</span> 
+                </a>
+
+                <div class="my-3 h-px bg-gray-200"></div>
+
+                <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-xl text-red-500 hover:bg-red-50 font-medium">
+                    <span class="w-9 h-9 rounded-lg bg-red-50 flex items-center justify-center">
+                        <i class="fa fa-right-from-bracket"></i>
+                    </span>
+                    <span>Đăng xuất</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- ===== MAIN ===== -->
+        <main class="flex-1 bg-warm overflow-y-auto">
+            <section class="px-4 py-6 grid grid-cols-2 gap-4">
+                <div class="bg-white rounded-xl shadow p-4 flex items-center gap-3">
+                    <i class="fa fa-users text-xl text-primary"></i>
+                    <div>
+                        <div class="text-lg font-semibold">150</div>
+                        <div class="text-xs text-gray-500">Người dùng</div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow p-4 flex items-center gap-3">
+                    <i class="fa fa-box text-xl text-blue-500"></i>
+                    <div>
+                        <div class="text-lg font-semibold">120</div>
+                        <div class="text-xs text-gray-500">Sản phẩm</div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer
+            class="bg-warm border-t border-pink-200 px-6 py-3 text-sm text-gray-600 flex items-center justify-center">
+            © 2026 RattaTea Studio
+        </footer>
+
+    </div>
+
+    <!-- ===== JS ===== -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggleBtn = document.getElementById('mobileNavToggle');
+            const closeBtn = document.getElementById('mobileNavClose');
+            const mobileNav = document.getElementById('mobileNav');
+            const overlay = document.getElementById('mobileNavOverlay');
+
+            function openMenu() {
+                mobileNav.classList.remove('translate-x-full');
+                overlay.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeMenu() {
+                mobileNav.classList.add('translate-x-full');
+                overlay.classList.add('hidden');
+                document.body.style.overflow = '';
+            }
+
+            toggleBtn.addEventListener('click', openMenu);
+            closeBtn.addEventListener('click', closeMenu);
+            overlay.addEventListener('click', closeMenu);
+        });
+    </script>
+
+</body>
+
+</html>

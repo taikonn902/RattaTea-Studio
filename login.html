@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng Nhập</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FF7AA2',
+                        soft: '#FFB3C7',
+                        accent: '#FFD6E0',
+                        warm: '#FFF6F8'
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'ui-sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="font-sans bg-warm min-h-screen flex items-center justify-center px-4 overflow-x-hidden relative">
+
+    <!-- ===== Background blur ===== -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none">
+        <div class="absolute -top-24 -left-24 w-[320px] h-[320px] bg-primary/20 rounded-full blur-3xl">
+        </div>
+        <div class="absolute -bottom-24 -right-24 w-[320px] h-[320px] bg-soft/70 rounded-full blur-3xl">
+        </div>
+    </div>
+
+    <!-- ===== Login card ===== -->
+    <div id="loginCard" class="relative z-10 w-full max-w-md bg-white/90 backdrop-blur-xl
+               rounded-3xl shadow-2xl px-5 py-6 md:p-8
+               animate-fadeScale">
+
+        <!-- Close -->
+        <button onclick="history.back()" class="absolute top-4 right-4 w-9 h-9 flex items-center justify-center
+                   rounded-full bg-white shadow
+                   hover:bg-soft hover:text-primary hover:scale-105
+                   transition-all">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <!-- Logo -->
+        <div class="flex flex-col items-center mb-6">
+            <a href="index.html"
+                class="w-16 h-16 rounded-full bg-white border-2 border-primary flex items-center justify-center shadow hover:border-soft hover:scale-105 transition">
+                <img src="assets/images/logo.png" alt="RattaTea Studio" class="w-10 h-10 object-contain">
+            </a>
+
+            <h1 class="mt-3 text-2xl font-bold text-gray-800 font-great">RattaTea Studio</h1>
+
+            <p class="text-sm text-gray-500">Chào mừng bạn quay lại</p>
+        </div>
+
+        <!-- ===== Form ===== -->
+        <form id="loginForm" class="space-y-5 bg-white">
+
+            <!-- Email -->
+            <div class="relative">
+                <input type="email" id="email" placeholder=" " class="peer w-full px-4 py-3 border rounded-xl
+                           text-[13px] md:text-[14px]
+                           focus:border-primary
+                           focus:ring-2 focus:ring-soft
+                           outline-none transition" />
+
+                <label class="absolute left-4 top-1/2 -translate-y-1/2
+                           text-gray-400 text-sm bg-white px-1
+                           pointer-events-none transition-all duration-200
+                           peer-focus:-top-2 peer-focus:translate-y-0
+                           peer-focus:text-xs peer-focus:text-primary
+                           peer-[&:not(:placeholder-shown)]:-top-2
+                           peer-[&:not(:placeholder-shown)]:translate-y-0
+                           peer-[&:not(:placeholder-shown)]:text-xs
+                           peer-[&:not(:placeholder-shown)]:text-primary">
+                    Email
+                </label>
+            </div>
+
+            <!-- Password -->
+            <div class="relative">
+                <input type="password" placeholder=" " id="password" class="peer w-full px-4 py-3 pr-12 border rounded-xl
+                           text-[13px] md:text-[14px]
+                           focus:border-primary
+                           focus:ring-2 focus:ring-soft
+                           outline-none transition" />
+
+                <label class="absolute left-4 top-1/2 -translate-y-1/2
+                           text-gray-400 text-sm bg-white px-1
+                           pointer-events-none transition-all duration-200
+                           peer-focus:-top-2 peer-focus:translate-y-0
+                           peer-focus:text-xs peer-focus:text-primary
+                           peer-[&:not(:placeholder-shown)]:-top-2
+                           peer-[&:not(:placeholder-shown)]:translate-y-0
+                           peer-[&:not(:placeholder-shown)]:text-xs
+                           peer-[&:not(:placeholder-shown)]:text-primary">
+                    Mật khẩu
+                </label>
+
+                <!-- Toggle -->
+                <button type="button" class="absolute right-4 top-1/2 -translate-y-1/2
+                           text-gray-400 hover:text-primary transition">
+                    <i class="fa-solid fa-eye"></i>
+                </button>
+            </div>
+
+            <!-- Options -->
+            <div class="flex items-center justify-between text-sm">
+                <label class="flex items-center gap-2 cursor-pointer">
+                    <input type="checkbox" id="rememberMe" class="accent-soft cursor-pointer">
+                    Nhớ đăng nhập
+                </label>
+
+                <a href="#" class="text-primary hover:text-soft hover:underline transition">
+                    Quên mật khẩu?
+                </a>
+            </div>
+
+            <!-- Submit -->
+            <button type="submit" id="loginBtn" class="w-full py-3 rounded-full
+                       bg-primary text-white font-semibold
+                       shadow-lg shadow-primary/30
+                       hover:bg-soft hover:text-primary
+                       hover:shadow-soft/40
+                       hover:-translate-y-0.5
+                       active:scale-95
+                       transition-all">
+                Đăng nhập
+            </button>
+        </form>
+
+        <!-- Divider -->
+        <div class="my-6 flex items-center gap-3 text-sm text-gray-400">
+            <span class="flex-1 h-px bg-gray-200"></span>
+            hoặc
+            <span class="flex-1 h-px bg-gray-200"></span>
+        </div>
+
+        <!-- Social -->
+        <div class="flex gap-4">
+            <button class="flex-1 flex items-center justify-center gap-2 py-2
+                       border rounded-xl
+                       hover:bg-soft/40 hover:border-soft
+                       hover:-translate-y-0.5 transition">
+                <i class="fa-brands fa-google text-red-500"></i>
+                Google
+            </button>
+
+            <button class="flex-1 flex items-center justify-center gap-2 py-2
+                       border rounded-xl
+                       hover:bg-soft/40 hover:border-soft
+                       hover:-translate-y-0.5 transition">
+                <i class="fa-brands fa-facebook text-blue-600"></i>
+                Facebook
+            </button>
+        </div>
+
+        <!-- Register -->
+        <p class="mt-6 text-center text-sm text-gray-600">
+            <span>Chưa có tài khoản?</span>
+            <a href="register.html" class="text-primary font-medium hover:text-soft hover:underline transition">Đăng ký</a>
+        </p>
+    </div>
+</body>
+
+<script src="assets/js/login.js"></script>
+
+</html>

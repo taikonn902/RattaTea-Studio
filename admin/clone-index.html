@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang quản trị | RattaTea Studio</title>
+
+    <!-- ===== Lib & Fonts ===== -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/sidebar.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FF7AA2',
+                        accent: '#FFD6E0',
+                        warm: '#FFF6F8',
+                        soft: '#FFB3C7'
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'ui-sans-serif'],
+                        great: ['Great Vibes', 'cursive']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-warm min-h-screen font-sans ">
+    <div class="flex flex-col md:flex-row min-h-screen">
+        <!-- <aside id="sidebar"
+            class="sidebar hidden md:flex fixed top-0 left-0 h-screen bg-primary text-white flex flex-col transition-all duration-300 ease-in-out w-20 z-20">
+            <div class="flex flex-col flex-1 h-full">
+                <div id="logoContainer" class="w-full flex items-center justify-center p-4 relative">
+                    <div id="sidebarLogo" class="flex items-center gap-2 cursor-pointer transition-all duration-300">
+                        <img src="assets/images/logo.jpg" alt="Logo"
+                            class="w-10 h-10 rounded-full bg-white p-1 logo-img transition-all duration-300">
+                        <span class="text-2xl font-great-vibes logo-text hidden">RattaTea Studio</span>
+                    </div>
+                    <button id="sidebarClose"
+                        class="w-10 h-10 flex items-center justify-center rounded-full bg-white/20 hover:bg-accent text-white hover:text-primary transition-all hidden">
+                        <i class="fa fa-angle-left text-lg"></i>
+                    </button>
+                </div>
+
+                <nav id="sidebarNav" class="flex-1 flex flex-col justify-start w-full">
+                    <a href="#" class="nav-link flex items-center py-4 px-4 rounded hover:bg-accent transition gap-4">
+                        <i class="fa fa-home text-2xl"></i>
+                        <span class="nav-text text-[15px] text-base font-medium hidden">Trang chủ</span>
+                    </a>
+                    <a href="#" class="nav-link flex items-center py-4 px-4 rounded hover:bg-accent transition gap-4">
+                        <i class="fa fa-users text-2xl"></i>
+                        <span class="nav-text text-[15px] text-base font-medium hidden">Người dùng</span>
+                    </a>
+                    <a href="#" class="nav-link flex items-center py-4 px-4 rounded hover:bg-accent transition gap-4">
+                        <i class="fa fa-shopping-cart text-2xl"></i>
+                        <span class="nav-text text-[15px] text-base font-medium hidden">Đơn hàng</span>
+                    </a>
+                    <a href="#" class="nav-link flex items-center py-4 px-4 rounded hover:bg-accent transition gap-4">
+                        <i class="fa fa-box text-2xl"></i>
+                        <span class="nav-text text-[15px] text-base font-medium hidden">Sản phẩm</span>
+                    </a>
+                    <a href="#" class="nav-link flex items-center py-4 px-4 rounded hover:bg-accent transition gap-4">
+                        <i class="fa fa-chart-line text-2xl"></i>
+                        <span class="nav-text text-[15px] text-base font-medium hidden">Báo cáo</span>
+                    </a>
+                </nav>
+
+                <div class="mt-auto w-full flex flex-col items-center p-4">
+                    <a href="../login.html"
+                        class="w-full flex items-center justify-center gap-2 bg-white text-primary px-4 py-2 rounded-lg font-semibold hover:bg-accent hover:text-white transition">
+                        <i class="fa fa-sign-out-alt"></i>
+                        <span class="nav-text hidden">Đăng xuất</span>
+                    </a>
+                </div>
+            </div>
+        </aside> -->
+
+        <header class="md:hidden bg-primary text-white px-4 py-3 flex items-center gap-3 sticky top-0 z-30 flex justify-between">
+            <div class="flex items-center gap-3 min-w-[110px]">
+                <img src="assets/images/logo.jpg" class="w-12 h-12 rounded-full border-2 border-white p-1">
+                <div class="flex flex-col text-sm leading-tight">
+                    <span class="opacity-90">Xin chào,</span>
+                    <span class="font-semibold">Admin</span>
+                </div>
+            </div>
+
+            <button id="mobileNavToggle" class="w-11 h-11 flex items-center justify-center rounded-full bg-white/20">
+                <i class="fa fa-bars text-xl"></i>
+            </button>
+        </header>
+
+        
+
+        <div id="contentWrapper" class="transition-all duration-300 min-h-screen">
+            <main id="mainContent" class="flex-1 flex flex-col min-h-screen bg-warm">
+
+                <!-- <header class="dashboard-header hidden md:flex sticky top-0 z-30 bg-warm px-8 py-4 flex items-center justify-between border-b border-pink-200 shadow-sm transition-all duration-300 ease-in-out">
+                    <h1 class="text-2xl font-semibold text-primary">Trang Quản Trị</h1>
+                    <div class="flex items-center gap-4">
+                        <span class="font-medium text-gray-700">Xin chào, Admin 👑</span>
+                        <img src="assets/images/logo.jpg" alt="Avatar"
+                            class="w-10 h-10 rounded-full bg-white p-1 border border-primary shadow-sm">
+                    </div>
+                </header> -->
+
+                <section class="p-8 grid grid-cols-2 md:grid-cols-4 gap-6">
+                    <div class="bg-white rounded-xl shadow p-4 md:p-6 flex items-center gap-3 md:gap-4">
+                        <i class="fa fa-users text-xl md:text-3xl text-primary"></i>
+                        <div>
+                            <p class="text-lg md:text-2xl font-semibold">150</p>
+                            <p class="text-gray-500 text-xs md:text-sm">Người dùng</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow p-4 md:p-6 flex items-center gap-3 md:gap-4">
+                        <i class="fa fa-box text-xl md:text-3xl text-blue-500"></i>
+                        <div>
+                            <p class="text-lg md:text-2xl font-semibold">120</p>
+                            <p class="text-gray-500 text-xs md:text-sm">Sản phẩm</p>
+                        </div>
+                    </div>
+
+
+                    <!-- <div class="bg-white rounded-xl shadow p-6 flex items-center gap-4">
+                        <i class="fa fa-shopping-cart text-3xl text-green-500"></i>
+                        <div>
+                            <p class="text-2xl font-bold">27</p>
+                            <p class="text-gray-500 text-sm">Đơn hàng</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow p-6 flex items-center gap-4">
+                        <i class="fa fa-dollar-sign text-3xl text-yellow-500"></i>
+                        <div>
+                            <p class="text-2xl font-bold">3,500,000₫</p>
+                            <p class="text-gray-500 text-sm">Doanh thu</p>
+                        </div>
+                    </div> -->
+                </section>
+
+                <!-- <section class="p-8">
+                    <div class="bg-white rounded-xl shadow p-6">
+                        <h2 class="text-xl font-bold text-primary mb-4">Đơn hàng mới</h2>
+                        <p class="text-gray-700 mb-4">
+                        </p>
+
+                        <div class="overflow-x-auto">
+                            <div class="max-h-[400px] overflow-y-auto border border-gray-200 rounded-lg">
+                                <table class="w-full text-left border-collapse">
+                                    <thead class="bg-gray-50 sticky top-0 z-10">
+                                        <tr>
+                                            <th class="py-3 px-4 text-gray-600 font-medium border-b border-gray-200">Mã
+                                                đơn
+                                                hàng</th>
+                                            <th class="py-3 px-4 text-gray-600 font-medium border-b border-gray-200">Tên
+                                                người mua</th>
+                                            <th class="py-3 px-4 text-gray-600 font-medium border-b border-gray-200">
+                                                Tổng
+                                                tiền</th>
+                                            <th class="py-3 px-4 text-gray-600 font-medium border-b border-gray-200">
+                                                Trạng
+                                                thái</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="border-b hover:bg-gray-50 cursor-pointer" data-order-id="001">
+                                            <td class="py-3 px-4 text-primary font-medium">#001</td>
+                                            <td class="py-3 px-4">Nguyễn Văn A</td>
+                                            <td class="py-3 px-4">1,500,000₫</td>
+                                            <td class="py-3 px-4">
+                                                <span
+                                                    class="px-2 py-1 bg-green-100 text-green-800 rounded-full text-sm">Đang
+                                                    giao</span>
+                                            </td>
+                                        </tr>
+                                        <tr class="border-b hover:bg-gray-50 cursor-pointer" data-order-id="002">
+                                            <td class="py-3 px-4 text-primary font-medium">#002</td>
+                                            <td class="py-3 px-4">Trần Thị B</td>
+                                            <td class="py-3 px-4">750,000₫</td>
+                                            <td class="py-3 px-4">
+                                                <span
+                                                    class="px-2 py-1 bg-yellow-100 text-yellow-800 rounded-full text-sm">Chờ
+                                                    xử lý</span>
+                                            </td>
+                                        </tr>
+                                        <tr class="border-b hover:bg-gray-50 cursor-pointer" data-order-id="003">
+                                            <td class="py-3 px-4 text-primary font-medium">#003</td>
+                                            <td class="py-3 px-4">Lê Văn C</td>
+                                            <td class="py-3 px-4">2,300,000₫</td>
+                                            <td class="py-3 px-4">
+                                                <span
+                                                    class="px-2 py-1 bg-red-100 text-red-800 rounded-full text-sm">Hủy</span>
+                                            </td>
+                                        </tr>
+                                        <tr class="border-b hover:bg-gray-50 cursor-pointer" data-order-id="004">
+                                            <td class="py-3 px-4 text-primary font-medium">#004</td>
+                                            <td class="py-3 px-4">Phạm Thị D</td>
+                                            <td class="py-3 px-4">1,200,000₫</td>
+                                            <td class="py-3 px-4">
+                                                <span
+                                                    class="px-2 py-1 bg-green-100 text-green-800 rounded-full text-sm">Đang
+                                                    giao</span>
+                                            </td>
+                                        </tr>
+                                        <tr class="border-b hover:bg-gray-50 cursor-pointer" data-order-id="005">
+                                            <td class="py-3 px-4 text-primary font-medium">#005</td>
+                                            <td class="py-3 px-4">Ngô Văn E</td>
+                                            <td class="py-3 px-4">950,000₫</td>
+                                            <td class="py-3 px-4">
+                                                <span
+                                                    class="px-2 py-1 bg-yellow-100 text-yellow-800 rounded-full text-sm">Chờ
+                                                    xử lý</span>
+                                            </td>
+                                        </tr>
+                                        <tr class="border-b hover:bg-gray-50 cursor-pointer" data-order-id="005">
+                                            <td class="py-3 px-4 text-primary font-medium">#005</td>
+                                            <td class="py-3 px-4">Ngô Văn E</td>
+                                            <td class="py-3 px-4">950,000₫</td>
+                                            <td class="py-3 px-4">
+                                                <span
+                                                    class="px-2 py-1 bg-yellow-100 text-yellow-800 rounded-full text-sm">Chờ
+                                                    xử lý</span>
+                                            </td>
+                                        </tr>
+                                        <tr class="border-b hover:bg-gray-50 cursor-pointer" data-order-id="005">
+                                            <td class="py-3 px-4 text-primary font-medium">#005</td>
+                                            <td class="py-3 px-4">Ngô Văn E</td>
+                                            <td class="py-3 px-4">950,000₫</td>
+                                            <td class="py-3 px-4">
+                                                <span
+                                                    class="px-2 py-1 bg-yellow-100 text-yellow-800 rounded-full text-sm">Chờ
+                                                    xử lý</span>
+                                            </td>
+                                        </tr>
+                                        <tr class="border-b hover:bg-gray-50 cursor-pointer" data-order-id="005">
+                                            <td class="py-3 px-4 text-primary font-medium">#005</td>
+                                            <td class="py-3 px-4">Ngô Văn E</td>
+                                            <td class="py-3 px-4">950,000₫</td>
+                                            <td class="py-3 px-4">
+                                                <span
+                                                    class="px-2 py-1 bg-yellow-100 text-yellow-800 rounded-full text-sm">Chờ
+                                                    xử lý</span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="p-8">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+                        <div class="bg-white rounded-xl shadow p-6">
+                            <h2 class="text-xl font-bold text-primary mb-4">Lọc doanh thu</h2>
+                            <p class="text-gray-700 mb-4">Chọn khoảng thời gian để xem doanh thu.</p>
+                            <form id="revenueFilter" class="flex flex-col gap-4">
+                                <div class="flex flex-col md:flex-row gap-4 items-end">
+                                    <div class="flex flex-col flex-1">
+                                        <label for="startDate" class="font-medium text-gray-700 mb-1">Từ ngày:</label>
+                                        <input type="date" id="startDate"
+                                            class="border border-gray-300 rounded px-3 py-2">
+                                    </div>
+                                    <div class="flex flex-col flex-1">
+                                        <label for="endDate" class="font-medium text-gray-700 mb-1">Đến ngày:</label>
+                                        <input type="date" id="endDate"
+                                            class="border border-gray-300 rounded px-3 py-2">
+                                    </div>
+
+                                    <div class="flex md:justify-end">
+                                        <button type="submit"
+                                            class="bg-primary text-white px-4 py-2 rounded-lg font-semibold hover:bg-pink-500 transition">
+                                            Xem doanh thu
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+
+                            <div id="filteredRevenue" class="mt-4 text-gray-700 font-medium">
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-xl shadow p-6">
+                            <h2 class="text-xl font-bold text-primary mb-4">Sản phẩm bán chạy</h2>
+                            <ul id="topProducts" class="flex flex-col gap-3">
+                                <li class="flex items-center justify-between p-3 rounded hover:bg-pink-50 transition">
+                                    <span class="font-medium">Trà sữa truyền thống</span>
+                                    <span class="text-gray-500">120 bán</span>
+                                </li>
+                                <li class="flex items-center justify-between p-3 rounded hover:bg-pink-50 transition">
+                                    <span class="font-medium">Trà đào cam sả</span>
+                                    <span class="text-gray-500">95 bán</span>
+                                </li>
+                                <li class="flex items-center justify-between p-3 rounded hover:bg-pink-50 transition">
+                                    <span class="font-medium">Trà matcha latte</span>
+                                    <span class="text-gray-500">88 bán</span>
+                                </li>
+                                <li class="flex items-center justify-between p-3 rounded hover:bg-pink-50 transition">
+                                    <span class="font-medium">Trà vải lựu</span>
+                                    <span class="text-gray-500">70 bán</span>
+                                </li>
+                                <li class="flex items-center justify-between p-3 rounded hover:bg-pink-50 transition">
+                                    <span class="font-medium">Trà hồng sữa</span>
+                                    <span class="text-gray-500">65 bán</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="p-8">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-white rounded-xl shadow p-6">
+                            <h2 class="text-xl font-bold text-primary mb-4">Doanh thu trong tuần</h2>
+                            <div class="w-full h-64">
+                                <canvas id="weeklyRevenueChart" class="w-full h-full"></canvas>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-xl shadow p-6">
+                            <h2 class="text-xl font-bold text-primary mb-4">Doanh thu trong tháng</h2>
+                            <div class="w-full h-64">
+                                <canvas id="monthlyRevenueChart" class="w-full h-full"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </section> -->
+
+                <footer class="bg-warm border-t border-pink-200 px-8 py-4 mt-auto">
+                    <div
+                        class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center text-gray-600 text-sm">
+                        <p>&copy; 2026 RattaTea Studio. All rights reserved.</p>
+                        <div class="flex gap-4 mt-2 md:mt-0">
+                            <a href="#" class="hover:text-primary transition">Chính sách bảo mật</a>
+                            <a href="#" class="hover:text-primary transition">Điều khoản sử dụng</a>
+                            <a href="#" class="hover:text-primary transition">Hỗ trợ</a>
+                        </div>
+                    </div>
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+<!-- <script src="assets/js/sidebar.js"></script>
+<script src="assets/js/orders.js"></script>
+<script src="assets/js/chart.js"></script> -->
+<script src="assets/js/header-mobile.js"></script>
+
+</html>
