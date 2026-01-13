@@ -28,7 +28,7 @@
     </script>
 </head>
 
-<body class="bg-warm font-sans">
+<body class="bg-warm font-sans" data-page="index">
     <!-- 🔑 WRAPPER CHUẨN MOBILE -->
     <div class="flex flex-col min-h-[100dvh]">
 
@@ -64,48 +64,7 @@
             </div>
 
             <!-- NAV -->
-            <nav class="flex flex-col px-3 py-4 gap-1 text-sm">
-
-                <a href="../index.html" data-nav="index"
-                    class="nav-item group flex items-center gap-3 px-4 py-3 rounded-xl">
-                    <span class="w-9 h-9 rounded-lg bg-gray-100 flex items-center justify-center">
-                        <i class="fa fa-chart-line"></i>
-                    </span>
-                    <span>Trang Chính</span>
-                </a>
-
-                <a href="category/index.html" data-nav="category"
-                    class="nav-item group flex items-center gap-3 px-4 py-3 rounded-xl">
-                    <span class="w-9 h-9 rounded-lg bg-gray-100 flex items-center justify-center">
-                        <i class="fa fa-receipt"></i>
-                    </span>
-                    <span>Loại Sản Phẩm</span>
-                </a>
-
-                <a href="products/index.html" data-nav="product" class="nav-item group flex items-center gap-3 px-4 py-3 rounded-xl">
-                    <span class="w-9 h-9 rounded-lg bg-gray-100 flex items-center justify-center">
-                        <i class="fa fa-box"></i>
-                    </span>
-                    <span>Sản phẩm</span>
-                </a>
-
-                <a href="#" data-nav="user" class="nav-item group flex items-center gap-3 px-4 py-3 rounded-xl">
-                    <span class="w-9 h-9 rounded-lg bg-gray-100 flex items-center justify-center">
-                        <i class="fa fa-users"></i>
-                    </span>
-                    <span>Người dùng</span>
-                </a>
-
-                <div class="my-3 h-px bg-gray-200"></div>
-
-                <a href="#"
-                    class="flex items-center gap-3 px-4 py-3 rounded-xl text-red-500 hover:bg-red-50 font-medium">
-                    <span class="w-9 h-9 rounded-lg bg-red-50 flex items-center justify-center">
-                        <i class="fa fa-right-from-bracket"></i>
-                    </span>
-                    <span>Đăng xuất</span>
-                </a>
-            </nav>
+            <div id="nav-container"></div>
         </aside>
 
         <!-- ===== MAIN ===== -->
@@ -160,6 +119,20 @@
             closeBtn.addEventListener('click', closeMenu);
             overlay.addEventListener('click', closeMenu);
         });
+
+        // Load nav
+        fetch('UI/nav.html')
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('nav-container').innerHTML = html;
+                // Highlight active nav
+                const page = document.body.getAttribute('data-page');
+                document.querySelectorAll('.nav-item').forEach(item => {
+                    if (item.getAttribute('data-nav') === page) {
+                        item.classList.add('nav-active');
+                    }
+                });
+            });
     </script>
 
 </body>
