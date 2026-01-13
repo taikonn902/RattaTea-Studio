@@ -178,6 +178,12 @@
                 .then(response => response.text())
                 .then(html => {
                     document.getElementById('nav-container').innerHTML = html;
+                    // Adjust href for local/production
+                    const base = window.location.pathname.includes('/rattaTea-studio') ? '/rattaTea-studio' : '';
+                    document.querySelectorAll('#nav-container .nav-item').forEach(item => {
+                        const href = item.getAttribute('href');
+                        item.setAttribute('href', base + href);
+                    });
                     // Highlight active nav
                     const page = document.body.getAttribute('data-page');
                     document.querySelectorAll('.nav-item').forEach(item => {
