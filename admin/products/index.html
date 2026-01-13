@@ -28,6 +28,23 @@
             }
         }
     </script>
+
+    <style>
+        .nav-active {
+            background-color: rgba(255, 122, 162, 0.1);
+            color: #FF7AA2;
+            font-weight: 600;
+            pointer-events: none;
+        }
+
+        .nav-active span:first-child {
+            background-color: rgba(255, 122, 162, 0.2);
+        }
+
+        .nav-active i {
+            color: #FF7AA2;
+        }
+    </style>
 </head>
 
 <body class="bg-warm font-sans" data-page="product">
@@ -66,7 +83,50 @@
         </div>
 
         <!-- NAV -->
-        <div id="nav-container"></div>
+        <nav class="flex flex-col px-3 py-4 gap-1 text-sm">
+
+            <a href="../index.html" data-nav="index"
+               class="nav-item group flex items-center gap-3 px-4 py-3 rounded-xl">
+                <span class="w-9 h-9 rounded-lg bg-gray-100 flex items-center justify-center">
+                    <i class="fa fa-chart-line"></i>
+                </span>
+                <span>Trang Chính</span>
+            </a>
+
+            <a href="../categorys/index.html" data-nav="category"
+               class="nav-item group flex items-center gap-3 px-4 py-3 rounded-xl">
+                <span class="w-9 h-9 rounded-lg bg-gray-100 flex items-center justify-center">
+                    <i class="fa fa-receipt"></i>
+                </span>
+                <span>Loại Sản Phẩm</span>
+            </a>
+
+            <a href="index.html" data-nav="product"
+               class="nav-item group flex items-center gap-3 px-4 py-3 rounded-xl">
+                <span class="w-9 h-9 rounded-lg bg-gray-100 flex items-center justify-center">
+                    <i class="fa fa-box"></i>
+                </span>
+                <span>Sản phẩm</span>
+            </a>
+
+            <a href="../users/index.html" data-nav="user"
+               class="nav-item group flex items-center gap-3 px-4 py-3 rounded-xl">
+                <span class="w-9 h-9 rounded-lg bg-gray-100 flex items-center justify-center">
+                    <i class="fa fa-users"></i>
+                </span>
+                <span>Người dùng</span>
+            </a>
+
+            <div class="my-3 h-px bg-gray-200"></div>
+
+            <a href="#"
+               class="flex items-center gap-3 px-4 py-3 rounded-xl text-red-500 hover:bg-red-50 font-medium">
+                <span class="w-9 h-9 rounded-lg bg-red-50 flex items-center justify-center">
+                    <i class="fa fa-right-from-bracket"></i>
+                </span>
+                <span>Đăng xuất</span>
+            </a>
+        </nav>
     </aside>
 
     <!-- ===== MAIN ===== -->
@@ -186,26 +246,14 @@
 
 <!-- ===== JS ===== -->
 <script>
-    /* Load nav */
+    /* Active nav */
     document.addEventListener('DOMContentLoaded', () => {
-        fetch('../UI/nav.html')
-            .then(response => response.text())
-            .then(html => {
-                document.getElementById('nav-container').innerHTML = html;
-                // Adjust href for local/production
-                const base = window.location.pathname.includes('/rattaTea-studio') ? '/rattaTea-studio' : '';
-                document.querySelectorAll('#nav-container .nav-item').forEach(item => {
-                    const href = item.getAttribute('href');
-                    item.setAttribute('href', base + href);
-                });
-                // Highlight active nav
-                const page = document.body.getAttribute('data-page');
-                document.querySelectorAll('.nav-item').forEach(item => {
-                    if (item.getAttribute('data-nav') === page) {
-                        item.classList.add('nav-active');
-                    }
-                });
-            });
+        const currentPage = document.body.dataset.page;
+        document.querySelectorAll('.nav-item').forEach(link => {
+            if (link.dataset.nav === currentPage) {
+                link.classList.add('nav-active');
+            }
+        });
     });
 
     /* Mobile nav */
