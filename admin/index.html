@@ -63,40 +63,43 @@
                 </button>
             </div>
 
-            <!-- Nav -->
+            <!-- NAV -->
             <nav class="flex flex-col px-3 py-4 gap-1 text-sm">
-                <!-- Item --> 
-                <a href="index.html" class="group flex items-center gap-3 px-4 py-3 rounded-xl bg-primary/10 text-primary font-semibold">
-                    <span class="w-9 h-9 rounded-lg bg-primary/20 flex items-center justify-center">
-                        <i class="fa fa-chart-line text-base"></i> 
-                    </span> 
-                    <span>Trang Chính</span> 
-                </a> 
-                <!-- Item -->
-                <a href="categorys/index.html" class="group flex items-center gap-3 px-4 py-3 rounded-xl text-gray-700 hover:bg-gray-100 transition">
-                    <span class="w-9 h-9 rounded-lg bg-gray-100 group-hover:bg-primary/10 flex items-center justify-center transition">
-                        <i class="fa fa-receipt text-base text-gray-500 group-hover:text-primary"></i> 
+
+                <a href="../index.html" data-nav="index"
+                    class="nav-item group flex items-center gap-3 px-4 py-3 rounded-xl">
+                    <span class="w-9 h-9 rounded-lg bg-gray-100 flex items-center justify-center">
+                        <i class="fa fa-chart-line"></i>
                     </span>
-                    <span>Loại Sản Phẩm</span> 
-                </a> 
-                <!-- Item --> 
-                 <a href="products/index.html" class="group flex items-center gap-3 px-4 py-3 rounded-xl text-gray-700 hover:bg-gray-100 transition">
-                    <span class="w-9 h-9 rounded-lg bg-gray-100 group-hover:bg-blue-100 flex items-center justify-center transition">
-                        <i class="fa fa-box text-base text-gray-500 group-hover:text-blue-500"></i> 
-                    </span> 
-                    <span>Sản phẩm</span> 
-                </a> 
-                <!-- Item --> 
-                <a href="#" class="group flex items-center gap-3 px-4 py-3 rounded-xl text-gray-700 hover:bg-gray-100 transition">
-                    <span class="w-9 h-9 rounded-lg bg-gray-100 group-hover:bg-purple-100 flex items-center justify-center transition">
-                        <i class="fa fa-users text-base text-gray-500 group-hover:text-purple-500"></i> 
+                    <span>Trang Chính</span>
+                </a>
+
+                <a href="category/index.html" data-nav="category"
+                    class="nav-item group flex items-center gap-3 px-4 py-3 rounded-xl">
+                    <span class="w-9 h-9 rounded-lg bg-gray-100 flex items-center justify-center">
+                        <i class="fa fa-receipt"></i>
                     </span>
-                    <span>Người Dùng</span> 
+                    <span>Loại Sản Phẩm</span>
+                </a>
+
+                <a href="products/index.html" data-nav="product" class="nav-item group flex items-center gap-3 px-4 py-3 rounded-xl">
+                    <span class="w-9 h-9 rounded-lg bg-gray-100 flex items-center justify-center">
+                        <i class="fa fa-box"></i>
+                    </span>
+                    <span>Sản phẩm</span>
+                </a>
+
+                <a href="#" data-nav="user" class="nav-item group flex items-center gap-3 px-4 py-3 rounded-xl">
+                    <span class="w-9 h-9 rounded-lg bg-gray-100 flex items-center justify-center">
+                        <i class="fa fa-users"></i>
+                    </span>
+                    <span>Người dùng</span>
                 </a>
 
                 <div class="my-3 h-px bg-gray-200"></div>
 
-                <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-xl text-red-500 hover:bg-red-50 font-medium">
+                <a href="#"
+                    class="flex items-center gap-3 px-4 py-3 rounded-xl text-red-500 hover:bg-red-50 font-medium">
                     <span class="w-9 h-9 rounded-lg bg-red-50 flex items-center justify-center">
                         <i class="fa fa-right-from-bracket"></i>
                     </span>
