@@ -265,32 +265,29 @@
                         <form id="addProductForm" class="max-w-5xl mx-auto px-6 py-6 space-y-6">
 
                             <!-- IMAGE PREVIEW -->
-                            <div>
-                                <div class="mt-2 flex items-start gap-4">
+                            <div class="space-y-4">
+                                <div class="w-[150px] h-[150px] rounded-xl border bg-white
+                               overflow-hidden flex items-center justify-center mx-auto">
+                                    <img id="productImagePreview" class="w-full h-full object-cover hidden">
+                                    <span id="imagePlaceholder" class="text-xs text-gray-400 text-center px-2">
+                                        Chưa có ảnh
+                                    </span>
+                                </div>
 
-                                    <div class="w-[100px] h-[100px] rounded-xl border bg-white
-                                   overflow-hidden flex items-center justify-center">
-                                        <img id="productImagePreview" class="w-full h-full object-cover hidden">
-                                        <span id="imagePlaceholder" class="text-xs text-gray-400 text-center px-2">
-                                            Chưa có ảnh
-                                        </span>
-                                    </div>
+                                <div class="flex items-center gap-4">
+                                    <span id="imageName" class="block text-sm text-gray-500 truncate flex-1">
+                                        Chưa chọn ảnh
+                                    </span>
 
-                                    <div class="flex-1 space-y-2">
-                                        <span id="imageName" class="block text-sm text-gray-500 truncate">
-                                            Chưa chọn ảnh
-                                        </span>
-
-                                        <label class="inline-flex items-center gap-2
-                                       px-4 py-2 rounded-lg
-                                       bg-primary text-white text-sm
-                                       cursor-pointer w-fit">
-                                            <i class="fa fa-image"></i>
-                                            Thêm ảnh
-                                            <input type="file" name="image" id="productImageInput" accept="image/*"
-                                                class="hidden">
-                                        </label>
-                                    </div>
+                                    <label class="inline-flex items-center gap-2
+                                   px-4 py-2 rounded-lg
+                                   bg-primary text-white text-sm
+                                   cursor-pointer">
+                                        <i class="fa fa-image"></i>
+                                        Thêm ảnh
+                                        <input type="file" name="image" id="productImageInput" accept="image/*"
+                                            class="hidden">
+                                    </label>
                                 </div>
                             </div>
 
@@ -589,71 +586,84 @@
     cancelProductBtn.addEventListener('click', closeProductModal);
 </script>
 
-<!-- Script xử lý thêm màu sắc sản phẩm -->
+<!-- Color Picker -->
 <script>
-    const colorSelect = document.getElementById('colorSelect');
-    const addColorBtn = document.getElementById('addColorBtn');
-    const colorList = document.getElementById('colorList');
+const colorSelect = document.getElementById('colorSelect');
+const addColorBtn = document.getElementById('addColorBtn');
+const colorList = document.getElementById('colorList');
 
-    const addedColors = new Set();
+const addedColors = new Set();
 
-    addColorBtn.addEventListener('click', () => {
-        const color = colorSelect.value;
-        if (!color || addedColors.has(color)) return;
+addColorBtn.addEventListener('click', () => {
+    const color = colorSelect.value;
+    if (!color || addedColors.has(color)) return;
 
-        addedColors.add(color);
+    addedColors.add(color);
 
-        const div = document.createElement('div');
-        div.className = `
-        flex items-center gap-4
-        bg-white border rounded-xl p-3
+    const wrapper = document.createElement('div');
+    wrapper.className = `
+        flex items-center gap-3
+        bg-white border rounded-2xl p-3
     `;
 
-        div.innerHTML = `
-        <div class="w-10 h-10 rounded-full border"
-             style="background:${color}"></div>
+    wrapper.innerHTML = `
+        <!-- IMAGE PICKER (LEFT) -->
+        <label
+            class="w-[64px] h-[64px]
+                   rounded-xl border border-dashed
+                   bg-gray-50
+                   flex items-center justify-center
+                   cursor-pointer
+                   overflow-hidden
+                   hover:border-primary transition">
 
-        <div class="w-[70px] h-[70px] rounded-lg border
-                    overflow-hidden flex items-center justify-center">
             <img class="w-full h-full object-cover hidden">
-            <span class="text-xs text-gray-400">Chưa có ảnh</span>
-        </div>
 
-        <label class="px-3 py-2 rounded-lg border
-                      text-sm cursor-pointer">
-            Chọn ảnh
+            <i class="fa fa-camera text-gray-400 text-lg"></i>
+
             <input type="file" accept="image/*" class="hidden">
         </label>
 
+        <!-- COLOR DOT -->
+        <div class="w-8 h-8 rounded-full border"
+             style="background:${color}">
+        </div>
+
+        <!-- REMOVE -->
         <button
+            type="button"
             class="ml-auto w-9 h-9 rounded-full
-                   bg-red-50 text-red-600
-                   flex items-center justify-center">
-            <i class="fa fa-trash"></i>
+                   bg-red-50 text-red-500
+                   flex items-center justify-center
+                   hover:bg-red-100 transition">
+            <i class="fa fa-trash text-sm"></i>
         </button>
     `;
 
-        const fileInput = div.querySelector('input[type="file"]');
-        const img = div.querySelector('img');
-        const placeholder = div.querySelector('span');
+    const fileInput = wrapper.querySelector('input[type="file"]');
+    const img = wrapper.querySelector('img');
+    const icon = wrapper.querySelector('i.fa-camera');
 
-        fileInput.addEventListener('change', () => {
-            const file = fileInput.files[0];
-            if (!file) return;
-            img.src = URL.createObjectURL(file);
-            img.classList.remove('hidden');
-            placeholder.classList.add('hidden');
-        });
+    fileInput.addEventListener('change', () => {
+        const file = fileInput.files[0];
+        if (!file) return;
 
-        div.querySelector('button').addEventListener('click', () => {
-            addedColors.delete(color);
-            div.remove();
-        });
-
-        colorList.appendChild(div);
+        img.src = URL.createObjectURL(file);
+        img.classList.remove('hidden');
+        icon.classList.add('hidden');
     });
+
+    wrapper.querySelector('button').addEventListener('click', () => {
+        addedColors.delete(color);
+        wrapper.remove();
+    });
+
+    colorList.appendChild(wrapper);
+});
 </script>
 
+
+<!-- Custom Select -->
 <script>
     document.addEventListener("DOMContentLoaded", () => {
 
@@ -720,6 +730,32 @@
     });
 </script>
 
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const fileInput = document.getElementById('productImageInput');
+    const previewImg = document.getElementById('productImagePreview');
+    const placeholder = document.getElementById('imagePlaceholder');
+    const imageName = document.getElementById('imageName');
+
+    fileInput.addEventListener('change', () => {
+        const file = fileInput.files[0];
+        if (!file) return;
+
+        /* ===== UPDATE PREVIEW ===== */
+        const imageURL = URL.createObjectURL(file);
+        previewImg.src = imageURL;
+        previewImg.classList.remove('hidden');
+
+        /* ===== HIDE PLACEHOLDER ===== */
+        placeholder.classList.add('hidden');
+
+        /* ===== UPDATE FILE NAME ===== */
+        imageName.textContent = file.name;
+        imageName.classList.remove('text-gray-400');
+        imageName.classList.add('text-gray-700');
+    });
+});
+</script>
 
 
 
