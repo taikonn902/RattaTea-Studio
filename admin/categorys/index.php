@@ -12,6 +12,7 @@
 
     <!-- Tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
         tailwind.config = {
@@ -83,7 +84,7 @@
             <!-- NAV -->
             <nav class="flex flex-col px-3 py-4 gap-1 text-sm">
 
-                <a href="../index.html" data-nav="index"
+                <a href="../index.php" data-nav="index"
                     class="nav-item group flex items-center gap-3 px-4 py-3 rounded-xl">
                     <span class="w-9 h-9 rounded-lg bg-gray-100 flex items-center justify-center">
                         <i class="fa fa-chart-line"></i>
@@ -91,7 +92,7 @@
                     <span>Trang Chính</span>
                 </a>
 
-                <a href="index.html" data-nav="category"
+                <a href="index.php" data-nav="category"
                     class="nav-item group flex items-center gap-3 px-4 py-3 rounded-xl">
                     <span class="w-9 h-9 rounded-lg bg-gray-100 flex items-center justify-center">
                         <i class="fa fa-receipt"></i>
@@ -99,14 +100,16 @@
                     <span>Loại Sản Phẩm</span>
                 </a>
 
-                <a href="../products/index.html" data-nav="product" class="nav-item group flex items-center gap-3 px-4 py-3 rounded-xl">
+                <a href="../products/index.html" data-nav="product"
+                    class="nav-item group flex items-center gap-3 px-4 py-3 rounded-xl">
                     <span class="w-9 h-9 rounded-lg bg-gray-100 flex items-center justify-center">
                         <i class="fa fa-box"></i>
                     </span>
                     <span>Sản phẩm</span>
                 </a>
 
-                <a href="../users/index.html" data-nav="user" class="nav-item group flex items-center gap-3 px-4 py-3 rounded-xl">
+                <a href="../users/index.html" data-nav="user"
+                    class="nav-item group flex items-center gap-3 px-4 py-3 rounded-xl">
                     <span class="w-9 h-9 rounded-lg bg-gray-100 flex items-center justify-center">
                         <i class="fa fa-users"></i>
                     </span>
@@ -131,28 +134,18 @@
             <div class="mb-5 flex items-center justify-between">
                 <h1 class="text-lg font-semibold text-gray-800">Danh sách danh mục</h1>
 
-                <button id="openCategoryModal" class="px-4 py-2 rounded-xl bg-primary text-white text-sm font-semibold flex items-center gap-2">
+                <button id="openCategoryModal"
+                    class="px-4 py-2 rounded-xl bg-primary text-white text-sm font-semibold flex items-center gap-2">
                     <i class="fa-solid fa-plus"></i>
                     <span>Thêm</span>
                 </button>
             </div>
 
-            <div class="space-y-3">
-                <div class="bg-white rounded-xl shadow p-4 flex items-center justify-between">
-                    <div>
-                        <div class="font-semibold">Trà sữa</div>
-                        <div class="text-xs text-gray-500">12 sản phẩm</div>
-                    </div>
-                </div>
+            <!-- Category List -->
+            <div id="categoryList" class="space-y-3"></div>
 
-                <div class="bg-white rounded-xl shadow p-4 flex items-center justify-between">
-                    <div>
-                        <div class="font-semibold">Trà trái cây</div>
-                        <div class="text-xs text-gray-500">8 sản phẩm</div>
-                    </div>
-                </div>
-            </div>
         </main>
+
         <!-- ===== ADD CATEGORY MODAL ===== -->
         <div id="categoryModal" class="fixed inset-0 z-50 hidden items-center justify-center">
 
@@ -205,12 +198,10 @@
         <footer class="border-t border-pink-200 px-6 py-3 text-sm text-gray-600 text-center">
             © 2026 RattaTea Studio
         </footer>
-    </div>
-
-    <!-- ===== JS ===== -->
+    </div> 
 
 </body>
+    <script src="../assets/js/helper-toast.js"></script>
     <script src="category.js"></script>
-    <script src="help-toast.js"></script>
 
 </html>

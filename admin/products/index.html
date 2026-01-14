@@ -48,228 +48,673 @@
 </head>
 
 <body class="bg-warm font-sans" data-page="product">
-<div class="flex flex-col min-h-[100dvh]">
+    <div class="flex flex-col min-h-[100dvh]">
 
-    <!-- ===== HEADER ===== -->
-    <header class="bg-primary text-white px-4 py-3 flex items-center justify-between sticky top-0 z-30">
-        <div class="flex items-center gap-3">
-            <img src="../assets/images/logo.jpg" class="w-10 h-10 rounded-full border-2 border-white p-1">
-            <div class="text-sm leading-tight">
-                <div class="opacity-90">Xin chào,</div>
-                <div class="font-semibold">Admin</div>
+        <!-- ===== HEADER ===== -->
+        <header class="bg-primary text-white px-4 py-3 flex items-center justify-between sticky top-0 z-30">
+            <div class="flex items-center gap-3">
+                <img src="../assets/images/logo.jpg" class="w-10 h-10 rounded-full border-2 border-white p-1">
+                <div class="text-sm leading-tight">
+                    <div class="opacity-90">Xin chào,</div>
+                    <div class="font-semibold">Admin</div>
+                </div>
             </div>
-        </div>
 
-        <button id="mobileNavToggle"
-            class="w-10 h-10 flex items-center justify-center rounded-full bg-white/20">
-            <i class="fa fa-bars"></i>
-        </button>
-    </header>
+            <button id="mobileNavToggle" class="w-10 h-10 flex items-center justify-center rounded-full bg-white/20">
+                <i class="fa fa-bars"></i>
+            </button>
+        </header>
 
-    <!-- ===== OVERLAY ===== -->
-    <div id="mobileNavOverlay" class="fixed inset-0 bg-black/40 z-40 hidden"></div>
+        <!-- ===== OVERLAY ===== -->
+        <div id="mobileNavOverlay" class="fixed inset-0 bg-black/40 z-40 hidden"></div>
 
-    <!-- ===== SIDEBAR MOBILE ===== -->
-    <aside id="mobileNav"
-        class="fixed top-0 right-0 h-full w-[80%] max-w-xs bg-white z-50
+        <!-- ===== SIDEBAR MOBILE ===== -->
+        <aside id="mobileNav" class="fixed top-0 right-0 h-full w-[80%] max-w-xs bg-white z-50
                translate-x-full transition-transform duration-300 shadow-xl flex flex-col">
 
-        <div class="h-16 px-4 flex items-center justify-between border-b">
-            <span class="font-semibold text-primary">RattaTea Studio</span>
-            <button id="mobileNavClose"
-                class="w-9 h-9 flex items-center justify-center rounded-full bg-gray-100">
-                <i class="fa fa-times"></i>
-            </button>
-        </div>
+            <div class="h-16 px-4 flex items-center justify-between border-b">
+                <span class="font-semibold text-primary">RattaTea Studio</span>
+                <button id="mobileNavClose" class="w-9 h-9 flex items-center justify-center rounded-full bg-gray-100">
+                    <i class="fa fa-times"></i>
+                </button>
+            </div>
 
-        <!-- NAV -->
-        <nav class="flex flex-col px-3 py-4 gap-1 text-sm">
+            <!-- NAV -->
+            <nav class="flex flex-col px-3 py-4 gap-1 text-sm">
 
-            <a href="../index.html" data-nav="index"
-               class="nav-item group flex items-center gap-3 px-4 py-3 rounded-xl">
-                <span class="w-9 h-9 rounded-lg bg-gray-100 flex items-center justify-center">
-                    <i class="fa fa-chart-line"></i>
-                </span>
-                <span>Trang Chính</span>
-            </a>
+                <a href="../index.html" data-nav="index"
+                    class="nav-item group flex items-center gap-3 px-4 py-3 rounded-xl">
+                    <span class="w-9 h-9 rounded-lg bg-gray-100 flex items-center justify-center">
+                        <i class="fa fa-chart-line"></i>
+                    </span>
+                    <span>Trang Chính</span>
+                </a>
 
-            <a href="../categorys/index.html" data-nav="category"
-               class="nav-item group flex items-center gap-3 px-4 py-3 rounded-xl">
-                <span class="w-9 h-9 rounded-lg bg-gray-100 flex items-center justify-center">
-                    <i class="fa fa-receipt"></i>
-                </span>
-                <span>Loại Sản Phẩm</span>
-            </a>
+                <a href="../categorys/index.php" data-nav="category"
+                    class="nav-item group flex items-center gap-3 px-4 py-3 rounded-xl">
+                    <span class="w-9 h-9 rounded-lg bg-gray-100 flex items-center justify-center">
+                        <i class="fa fa-receipt"></i>
+                    </span>
+                    <span>Loại Sản Phẩm</span>
+                </a>
 
-            <a href="index.html" data-nav="product"
-               class="nav-item group flex items-center gap-3 px-4 py-3 rounded-xl">
-                <span class="w-9 h-9 rounded-lg bg-gray-100 flex items-center justify-center">
-                    <i class="fa fa-box"></i>
-                </span>
-                <span>Sản phẩm</span>
-            </a>
+                <a href="index.html" data-nav="product"
+                    class="nav-item group flex items-center gap-3 px-4 py-3 rounded-xl">
+                    <span class="w-9 h-9 rounded-lg bg-gray-100 flex items-center justify-center">
+                        <i class="fa fa-box"></i>
+                    </span>
+                    <span>Sản phẩm</span>
+                </a>
 
-            <a href="../users/index.html" data-nav="user"
-               class="nav-item group flex items-center gap-3 px-4 py-3 rounded-xl">
-                <span class="w-9 h-9 rounded-lg bg-gray-100 flex items-center justify-center">
-                    <i class="fa fa-users"></i>
-                </span>
-                <span>Người dùng</span>
-            </a>
+                <a href="../users/index.html" data-nav="user"
+                    class="nav-item group flex items-center gap-3 px-4 py-3 rounded-xl">
+                    <span class="w-9 h-9 rounded-lg bg-gray-100 flex items-center justify-center">
+                        <i class="fa fa-users"></i>
+                    </span>
+                    <span>Người dùng</span>
+                </a>
 
-            <div class="my-3 h-px bg-gray-200"></div>
+                <div class="my-3 h-px bg-gray-200"></div>
 
-            <a href="#"
-               class="flex items-center gap-3 px-4 py-3 rounded-xl text-red-500 hover:bg-red-50 font-medium">
-                <span class="w-9 h-9 rounded-lg bg-red-50 flex items-center justify-center">
-                    <i class="fa fa-right-from-bracket"></i>
-                </span>
-                <span>Đăng xuất</span>
-            </a>
-        </nav>
-    </aside>
+                <a href="#"
+                    class="flex items-center gap-3 px-4 py-3 rounded-xl text-red-500 hover:bg-red-50 font-medium">
+                    <span class="w-9 h-9 rounded-lg bg-red-50 flex items-center justify-center">
+                        <i class="fa fa-right-from-bracket"></i>
+                    </span>
+                    <span>Đăng xuất</span>
+                </a>
+            </nav>
+        </aside>
 
-    <!-- ===== MAIN ===== -->
-    <main class="flex-1 overflow-y-auto px-4 py-6">
+        <!-- ===== MAIN ===== -->
+        <main class="flex-1 overflow-y-auto px-4 py-6">
 
-        <div class="mb-5 flex items-center justify-between">
-            <h1 class="text-lg font-semibold text-gray-800">Danh sách sản phẩm</h1>
+            <div class="mb-5 flex items-center justify-between">
+                <h1 class="text-lg font-semibold text-gray-800">Danh sách sản phẩm</h1>
 
-            <button id="openProductModal" class="px-4 py-2 rounded-xl bg-primary text-white text-sm font-semibold flex items-center gap-2">
+                <button id="openProductModal"
+                    class="px-4 py-2 rounded-xl bg-primary text-white text-sm font-semibold flex items-center gap-2">
                     <i class="fa-solid fa-plus"></i>
                     <span>Thêm</span>
                 </button>
-        </div>
+            </div>
 
-        <!-- PRODUCT LIST -->
-        <div class="space-y-3">
+            <!-- PRODUCT LIST -->
+            <div class="space-y-3">
 
-            <!-- TABLE -->
-    <div class="bg-white rounded-xl shadow overflow-hidden">
+                <!-- TABLE -->
+                <div class="bg-white rounded-xl shadow overflow-hidden">
 
-        <table class="w-full text-sm">
-            <thead class="bg-gray-50 text-gray-500">
-                <tr>
-                    <th class="px-4 py-3 text-left">Sản phẩm</th>
-                    <th class="px-4 py-3 text-right">Giá</th>
-                    <th class="px-4 py-3 text-center w-24">Thao tác</th>
-                </tr>
-            </thead>
+                    <table class="w-full text-sm">
+                        <thead class="bg-gray-50 text-gray-500">
+                            <tr>
+                                <th class="px-4 py-3 text-left">Sản phẩm</th>
+                                <th class="px-4 py-3 text-right">Giá</th>
+                                <th class="px-4 py-3 text-center w-24">Thao tác</th>
+                            </tr>
+                        </thead>
 
-            <tbody class="divide-y">
+                        <tbody class="divide-y">
 
-                <!-- ITEM -->
-                <tr class="hover:bg-gray-50">
-                    <td class="px-4 py-3">
-                        <div class="flex items-center gap-3">
-                            <img src="../assets/images/demo-tea.jpg"
-                                class="w-12 h-12 rounded-lg object-cover border">
+                            <!-- ITEM -->
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-4 py-3">
+                                    <div class="flex items-center gap-3">
+                                        <img src="../assets/images/demo-tea.jpg"
+                                            class="w-12 h-12 rounded-lg object-cover border">
 
-                            <div>
-                                <div class="font-semibold text-gray-800">
-                                    Trà sữa trân châu
+                                        <div>
+                                            <div class="font-semibold text-gray-800">
+                                                Trà sữa trân châu
+                                            </div>
+                                            <div class="text-xs text-gray-500">
+                                                Loại: Trà sữa
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+
+                                <td class="px-4 py-3 text-right font-semibold text-gray-800">
+                                    35.000đ
+                                </td>
+
+                                <td class="px-4 py-3">
+                                    <div class="flex justify-center gap-2">
+                                        <button onclick=""
+                                            class="w-10 h-10 flex items-center justify-center rounded-lg bg-green-500 text-white shadow hover:bg-green-600 hover:scale-110 transition"
+                                            title="Sửa">
+                                            <i class="fa fa-pen"></i>
+                                        </button>
+
+                                        <!-- Nút Xóa -->
+                                        <button onclick=""
+                                            class="w-10 h-10 flex items-center justify-center rounded-lg bg-red-500 text-white shadow hover:bg-red-600 hover:scale-110 transition transform"
+                                            title="Xóa">
+                                            <i class="fa fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <!-- ITEM -->
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-4 py-3">
+                                    <div class="flex items-center gap-3">
+                                        <img src="../assets/images/demo-tea2.jpg"
+                                            class="w-12 h-12 rounded-lg object-cover border">
+
+                                        <div>
+                                            <div class="font-semibold text-gray-800">
+                                                Trà đào cam sả
+                                            </div>
+                                            <div class="text-xs text-gray-500">
+                                                Loại: Trà trái cây
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+
+                                <td class="px-4 py-3 text-right font-semibold text-gray-800">
+                                    40.000đ
+                                </td>
+
+                                <td class="px-4 py-3">
+                                    <div class="flex justify-center gap-2">
+                                        <button onclick=""
+                                            class="w-10 h-10 flex items-center justify-center rounded-lg bg-green-500 text-white shadow hover:bg-green-600 hover:scale-110 transition"
+                                            title="Sửa">
+                                            <i class="fa fa-pen"></i>
+                                        </button>
+
+                                        <!-- Nút Xóa -->
+                                        <button onclick=""
+                                            class="w-10 h-10 flex items-center justify-center rounded-lg bg-red-500 text-white shadow hover:bg-red-600 hover:scale-110 transition transform"
+                                            title="Xóa">
+                                            <i class="fa fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+            <!-- ===== ADD PRODUCT FULL SCREEN MODAL ===== -->
+            <!-- ===== PRODUCT MODAL ===== -->
+            <div id="productModal" class="fixed inset-0 z-50 hidden bg-black/40 scroll-y-auto">
+
+                <div id="productModalBox" class="absolute inset-0 bg-gray-50
+                translate-y-full opacity-0
+                transition-all duration-300 ease-out">
+
+                    <!-- HEADER -->
+                    <div class="sticky top-0 bg-white border-b px-6 py-4
+                    flex items-center justify-between">
+                        <h2 class="text-lg font-semibold">Thêm sản phẩm</h2>
+                        <button id="closeProductModal" class="w-10 h-10 rounded-full bg-gray-100
+                           flex items-center justify-center">
+                            <i class="fa fa-times"></i>
+                        </button>
+                    </div>
+
+                    <div class="flex-1 overflow-y-auto">
+                    <!-- FORM -->
+                    <form class="max-w-5xl mx-auto px-6 py-6 space-y-6">
+
+                        <!-- IMAGE PREVIEW -->
+                        <div>
+                            <div class="mt-2 flex items-start gap-4">
+
+                                <div class="w-[100px] h-[100px] rounded-xl border bg-white
+                               overflow-hidden flex items-center justify-center">
+                                    <img id="productImagePreview" class="w-full h-full object-cover hidden">
+                                    <span id="imagePlaceholder" class="text-xs text-gray-400 text-center px-2">
+                                        Chưa có ảnh
+                                    </span>
                                 </div>
-                                <div class="text-xs text-gray-500">
-                                    Loại: Trà sữa
+
+                                <div class="flex-1 space-y-2">
+                                    <span id="imageName" class="block text-sm text-gray-500 truncate">
+                                        Chưa chọn ảnh
+                                    </span>
+
+                                    <label class="inline-flex items-center gap-2
+                                   px-4 py-2 rounded-lg
+                                   bg-primary text-white text-sm
+                                   cursor-pointer w-fit">
+                                        <i class="fa fa-image"></i>
+                                        Thêm ảnh
+                                        <input type="file" id="productImageInput" accept="image/*" class="hidden">
+                                    </label>
                                 </div>
                             </div>
                         </div>
-                    </td>
 
-                    <td class="px-4 py-3 text-right font-semibold text-gray-800">
-                        35.000đ
-                    </td>
+                        <!-- NAME + CATEGORY -->
+                        <div class="flex gap-4">
+                            <div class="w-[70%]">
+                                <label class="text-sm font-medium">Tên sản phẩm</label>
+                                <input type="text" required class="mt-1 w-full rounded-xl border px-4 py-2.5 text-sm
+                                  focus:outline-none focus:border-primary">
+                            </div>
 
-                    <td class="px-4 py-3">
-                        <div class="flex justify-center gap-2">
-                            <button
-                                class="w-8 h-8 rounded-lg bg-blue-50 text-blue-500 hover:bg-blue-100">
-                                <i class="fa fa-pen text-sm"></i>
-                            </button>
+                            <div class="w-[30%]">
+                                <label class="text-sm font-medium text-gray-700">
+                                    Loại sản phẩm
+                                </label>
 
-                            <button
-                                class="w-8 h-8 rounded-lg bg-red-50 text-red-500 hover:bg-red-100">
-                                <i class="fa fa-trash text-sm"></i>
-                            </button>
-                        </div>
-                    </td>
-                </tr>
+                                <div class="relative mt-1" id="categorySelect">
 
-                <!-- ITEM -->
-                <tr class="hover:bg-gray-50">
-                    <td class="px-4 py-3">
-                        <div class="flex items-center gap-3">
-                            <img src="../assets/images/demo-tea2.jpg"
-                                class="w-12 h-12 rounded-lg object-cover border">
+                                    <!-- SELECT BOX -->
+                                    <button type="button" class="w-full h-[36px]
+                   flex items-center justify-between
+                   rounded-lg border border-gray-300
+                   bg-white px-3 text-sm
+                   hover:border-gray-400
+                   focus:outline-none">
 
-                            <div>
-                                <div class="font-semibold text-gray-800">
-                                    Trà đào cam sả
-                                </div>
-                                <div class="text-xs text-gray-500">
-                                    Loại: Trà trái cây
+                                        <span id="categorySelected" class="text-gray-400">
+                                            Chọn loại
+                                        </span>
+
+                                        <i class="fa fa-chevron-down text-xs text-gray-400"></i>
+                                    </button>
+
+                                    <!-- OPTIONS -->
+                                    <ul class="absolute left-0 right-0 mt-1
+                   bg-white border rounded-lg shadow-md
+                   max-h-48 overflow-y-auto
+                   hidden z-20">
+
+                                        <li data-value="1" class="px-3 py-2 text-sm cursor-pointer
+                       hover:bg-primary/10">
+                                            Trà sữa
+                                        </li>
+
+                                        <li data-value="2" class="px-3 py-2 text-sm cursor-pointer
+                       hover:bg-primary/10">
+                                            Cà phê
+                                        </li>
+                                    </ul>
+
+                                    <!-- REAL VALUE -->
+                                    <input type="hidden" name="category_id" required>
                                 </div>
                             </div>
+
                         </div>
-                    </td>
 
-                    <td class="px-4 py-3 text-right font-semibold text-gray-800">
-                        40.000đ
-                    </td>
+                        <!-- PRICE -->
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="text-sm font-medium">Giá</label>
+                                <input type="number" required class="mt-1 w-full rounded-xl border px-4 py-2.5 text-sm
+                                  focus:outline-none focus:border-primary">
+                            </div>
 
-                    <td class="px-4 py-3">
-                        <div class="flex justify-center gap-2">
-                            <button
-                                class="w-8 h-8 rounded-lg bg-blue-50 text-blue-500">
-                                <i class="fa fa-pen text-sm"></i>
+                            <div>
+                                <label class="text-sm font-medium">Giá khuyến mãi</label>
+                                <input type="number" placeholder="Có thể để trống..." class="mt-1 w-full rounded-xl border px-4 py-2.5 text-sm
+                                  focus:outline-none focus:border-primary">
+                            </div>
+                        </div>
+
+                        <!-- ===== COLORS SECTION ===== -->
+                        <div class="space-y-3">
+                            <label class="text-sm font-medium">Màu sắc</label>
+
+                            <div class="flex gap-3 max-w-md">
+                                <select id="colorSelect" class="flex-1 rounded-lg border
+                                   px-3 py-2 text-sm
+                                   focus:outline-none focus:border-primary">
+                                    <option value="">-- Chọn màu --</option>
+                                    <option value="red">Đỏ</option>
+                                    <option value="blue">Xanh dương</option>
+                                    <option value="black">Đen</option>
+                                    <option value="white">Trắng</option>
+                                    <option value="yellow">Vàng</option>
+                                </select>
+
+                                <button type="button" id="addColorBtn" class="px-4 py-2 rounded-lg
+                                   bg-primary text-white text-sm">
+                                    Thêm
+                                </button>
+                            </div>
+
+                            <div id="colorList" class="space-y-3"></div>
+                        </div>
+
+                        <!-- STATUS -->
+                        <div>
+                            <label class="text-sm font-medium text-gray-700">
+                                Trạng thái
+                            </label>
+
+                            <div class="relative mt-1" id="statusSelect">
+
+                                <!-- SELECT BOX -->
+                                <button type="button" class="w-full h-[36px]
+                   flex items-center justify-between
+                   rounded-lg border border-gray-300
+                   bg-white px-3 text-sm
+                   hover:border-gray-400
+                   focus:outline-none">
+
+                                    <span id="statusSelected" class="text-gray-400">
+                                        Chọn trạng thái
+                                    </span>
+
+                                    <i class="fa fa-chevron-down text-xs text-gray-400"></i>
+                                </button>
+
+                                <!-- OPTIONS -->
+                                <ul class="absolute left-0 right-0 mt-1
+                   bg-white border rounded-lg shadow-md
+                   max-h-40 overflow-y-auto
+                   hidden z-20">
+
+                                    <li data-value="1" class="px-3 py-2 text-sm cursor-pointer
+                       hover:bg-primary/10">
+                                        Hiển thị
+                                    </li>
+
+                                    <li data-value="0" class="px-3 py-2 text-sm cursor-pointer
+                       hover:bg-primary/10">
+                                        Ẩn
+                                    </li>
+                                </ul>
+
+                                <!-- REAL VALUE -->
+                                <input type="hidden" name="status" required>
+                            </div>
+                        </div>
+
+
+                        <!-- DESCRIPTION -->
+                        <div>
+                            <label class="text-sm font-medium">Mô tả</label>
+                            <textarea rows="5" class="mt-1 w-full rounded-xl border px-4 py-2.5 text-sm
+                                 focus:outline-none focus:border-primary"></textarea>
+                        </div>
+
+                        <!-- ACTION -->
+                        <div class="flex justify-end gap-3 pt-4 border-t">
+                            <button type="button" id="cancelProduct" class="px-6 py-2.5 rounded-xl border text-sm">
+                                Huỷ
                             </button>
-                            <button
-                                class="w-8 h-8 rounded-lg bg-red-50 text-red-500">
-                                <i class="fa fa-trash text-sm"></i>
+                            <button type="submit" class="px-7 py-2.5 rounded-xl bg-primary text-white
+                               text-sm font-semibold">
+                                Lưu sản phẩm
                             </button>
                         </div>
-                    </td>
-                </tr>
 
-            </tbody>
-        </table>
+                    </form>
+                    </div>
+                </div>
+            </div>
 
-        </div>
-    </main>
 
-    <!-- ===== FOOTER ===== -->
-    <footer class="border-t border-pink-200 px-6 py-3 text-sm text-gray-600 text-center">
-        © 2026 RattaTea Studio
-    </footer>
 
-</div>
 
-<!-- ===== JS ===== -->
-<script>
-    /* Active nav */
-    document.addEventListener('DOMContentLoaded', () => {
-        const currentPage = document.body.dataset.page;
-        document.querySelectorAll('.nav-item').forEach(link => {
-            if (link.dataset.nav === currentPage) {
-                link.classList.add('nav-active');
-            }
+
+        </main>
+
+        <!-- ===== FOOTER ===== -->
+        <footer class="border-t border-pink-200 px-6 py-3 text-sm text-gray-600 text-center">
+            © 2026 RattaTea Studio
+        </footer>
+
+    </div>
+
+    <!-- ===== JS ===== -->
+    <script>
+        /* Active nav */
+        document.addEventListener('DOMContentLoaded', () => {
+            const currentPage = document.body.dataset.page;
+            document.querySelectorAll('.nav-item').forEach(link => {
+                if (link.dataset.nav === currentPage) {
+                    link.classList.add('nav-active');
+                }
+            });
         });
-    });
 
-    /* Mobile nav */
-    document.getElementById('mobileNavToggle').onclick = () => {
-        mobileNav.classList.remove('translate-x-full');
-        mobileNavOverlay.classList.remove('hidden');
-        document.body.style.overflow = 'hidden';
-    };
+        /* Mobile nav */
+        document.getElementById('mobileNavToggle').onclick = () => {
+            mobileNav.classList.remove('translate-x-full');
+            mobileNavOverlay.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        };
 
-    document.getElementById('mobileNavClose').onclick =
-    mobileNavOverlay.onclick = () => {
-        mobileNav.classList.add('translate-x-full');
-        mobileNavOverlay.classList.add('hidden');
-        document.body.style.overflow = '';
-    };
-</script>
+        document.getElementById('mobileNavClose').onclick =
+            mobileNavOverlay.onclick = () => {
+                mobileNav.classList.add('translate-x-full');
+                mobileNavOverlay.classList.add('hidden');
+                document.body.style.overflow = '';
+            };
+    </script>
 
 </body>
+
+<!-- Script xử lý form thêm sản phẩm -->
+<script>
+    document.getElementById('addProductForm').addEventListener('submit', async function (e) {
+        e.preventDefault();
+
+        const form = e.target;
+        const formData = new FormData(form);
+
+        if (!formData.get('product_name') || !formData.get('category_id')) {
+            showToast('Vui lòng nhập đủ thông tin bắt buộc', 'error');
+            return;
+        }
+
+        try {
+            const res = await fetch('../api/add-product.php', {
+                method: 'POST',
+                body: formData
+            });
+
+            const data = await res.json();
+
+            if (data.success) {
+                showToast(data.message, 'success');
+                form.reset();
+            } else {
+                showToast(data.message, 'error');
+            }
+
+        } catch (err) {
+            console.error(err);
+            showToast('Không thể kết nối server', 'error');
+        }
+    });
+</script>
+
+<!-- Script modal thêm sản phẩm -->
+<script>
+    /* ===== IMAGE PREVIEW ===== */
+    const imageInput = document.getElementById('productImageInput');
+    const previewImg = document.getElementById('productImagePreview');
+    const placeholder = document.getElementById('productImagePlaceholder');
+
+    imageInput.addEventListener('change', () => {
+        const file = imageInput.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = e => {
+            previewImg.src = e.target.result;
+            previewImg.classList.remove('hidden');
+            placeholder.classList.add('hidden');
+        };
+        reader.readAsDataURL(file);
+    });
+
+    /* ===== MODAL LOGIC ===== */
+    const productModal = document.getElementById('productModal');
+    const productModalBox = document.getElementById('productModalBox');
+    const openProductBtn = document.getElementById('openProductModal');
+    const closeProductBtn = document.getElementById('closeProductModal');
+    const cancelProductBtn = document.getElementById('cancelProduct');
+
+    function openProductModal() {
+        productModal.classList.remove('hidden');
+        requestAnimationFrame(() => {
+            productModalBox.classList.remove('translate-y-full', 'opacity-0');
+            productModalBox.classList.add('translate-y-0', 'opacity-100');
+        });
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeProductModal() {
+        productModalBox.classList.remove('translate-y-0', 'opacity-100');
+        productModalBox.classList.add('translate-y-full', 'opacity-0');
+        setTimeout(() => {
+            productModal.classList.add('hidden');
+            document.body.style.overflow = '';
+        }, 300);
+    }
+
+    openProductBtn.addEventListener('click', openProductModal);
+    closeProductBtn.addEventListener('click', closeProductModal);
+    cancelProductBtn.addEventListener('click', closeProductModal);
+</script>
+
+<!-- Script xử lý thêm màu sắc sản phẩm -->
+<script>
+    const colorSelect = document.getElementById('colorSelect');
+    const addColorBtn = document.getElementById('addColorBtn');
+    const colorList = document.getElementById('colorList');
+
+    const addedColors = new Set();
+
+    addColorBtn.addEventListener('click', () => {
+        const color = colorSelect.value;
+        if (!color || addedColors.has(color)) return;
+
+        addedColors.add(color);
+
+        const div = document.createElement('div');
+        div.className = `
+        flex items-center gap-4
+        bg-white border rounded-xl p-3
+    `;
+
+        div.innerHTML = `
+        <div class="w-10 h-10 rounded-full border"
+             style="background:${color}"></div>
+
+        <div class="w-[70px] h-[70px] rounded-lg border
+                    overflow-hidden flex items-center justify-center">
+            <img class="w-full h-full object-cover hidden">
+            <span class="text-xs text-gray-400">Chưa có ảnh</span>
+        </div>
+
+        <label class="px-3 py-2 rounded-lg border
+                      text-sm cursor-pointer">
+            Chọn ảnh
+            <input type="file" accept="image/*" class="hidden">
+        </label>
+
+        <button
+            class="ml-auto w-9 h-9 rounded-full
+                   bg-red-50 text-red-600
+                   flex items-center justify-center">
+            <i class="fa fa-trash"></i>
+        </button>
+    `;
+
+        const fileInput = div.querySelector('input[type="file"]');
+        const img = div.querySelector('img');
+        const placeholder = div.querySelector('span');
+
+        fileInput.addEventListener('change', () => {
+            const file = fileInput.files[0];
+            if (!file) return;
+            img.src = URL.createObjectURL(file);
+            img.classList.remove('hidden');
+            placeholder.classList.add('hidden');
+        });
+
+        div.querySelector('button').addEventListener('click', () => {
+            addedColors.delete(color);
+            div.remove();
+        });
+
+        colorList.appendChild(div);
+    });
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+
+        function initCustomSelect(wrapperId) {
+            const wrapper = document.getElementById(wrapperId);
+            if (!wrapper) return;
+
+            const button = wrapper.querySelector("button");
+            const selectedText = button.querySelector("span");
+            const dropdown = wrapper.querySelector("ul");
+            const options = dropdown.querySelectorAll("li");
+            const hiddenInput = wrapper.querySelector("input[type='hidden']");
+            const icon = button.querySelector("i");
+
+            // Toggle dropdown
+            button.addEventListener("click", (e) => {
+                e.stopPropagation();
+
+                closeAllSelects(wrapperId);
+
+                dropdown.classList.toggle("hidden");
+                icon.classList.toggle("rotate-180");
+            });
+
+            // Select option
+            options.forEach(option => {
+                option.addEventListener("click", () => {
+                    const value = option.dataset.value;
+                    const text = option.innerText;
+
+                    selectedText.innerText = text;
+                    selectedText.classList.remove("text-gray-400");
+                    selectedText.classList.add("text-gray-700");
+
+                    hiddenInput.value = value;
+
+                    dropdown.classList.add("hidden");
+                    icon.classList.remove("rotate-180");
+                });
+            });
+        }
+
+        // Close all dropdowns except current
+        function closeAllSelects(exceptId = null) {
+            document.querySelectorAll("[id$='Select']").forEach(select => {
+                if (select.id !== exceptId) {
+                    const ul = select.querySelector("ul");
+                    const icon = select.querySelector("i");
+                    if (ul) ul.classList.add("hidden");
+                    if (icon) icon.classList.remove("rotate-180");
+                }
+            });
+        }
+
+        // Init selects
+        initCustomSelect("categorySelect");
+        initCustomSelect("statusSelect");
+
+        // Click outside → close all
+        document.addEventListener("click", () => {
+            closeAllSelects();
+        });
+
+    });
+</script>
+
+
+
+
 </html>

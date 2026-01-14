@@ -66,14 +66,14 @@
             <!-- Nav -->
             <nav class="flex flex-col px-3 py-4 gap-1 text-sm">
                 <!-- Item --> 
-                <a href="index.html" class="group flex items-center gap-3 px-4 py-3 rounded-xl bg-primary/10 text-primary font-semibold">
+                <a href="index.php" class="group flex items-center gap-3 px-4 py-3 rounded-xl bg-primary/10 text-primary font-semibold">
                     <span class="w-9 h-9 rounded-lg bg-primary/20 flex items-center justify-center">
                         <i class="fa fa-chart-line text-base"></i> 
                     </span> 
                     <span>Trang Chính</span> 
                 </a> 
                 <!-- Item -->
-                <a href="categorys/index.html" class="group flex items-center gap-3 px-4 py-3 rounded-xl text-gray-700 hover:bg-gray-100 transition">
+                <a href="categorys/index.php" class="group flex items-center gap-3 px-4 py-3 rounded-xl text-gray-700 hover:bg-gray-100 transition">
                     <span class="w-9 h-9 rounded-lg bg-gray-100 group-hover:bg-primary/10 flex items-center justify-center transition">
                         <i class="fa fa-receipt text-base text-gray-500 group-hover:text-primary"></i> 
                     </span>
@@ -108,10 +108,21 @@
         <!-- ===== MAIN ===== -->
         <main class="flex-1 bg-warm overflow-y-auto">
             <section class="px-4 py-6 grid grid-cols-2 gap-4">
+                <?php
+                    require_once '../config/connect_db.php';
+
+                    // Đếm tổng số người dùng
+                    $stmt = $pdo->query("SELECT COUNT(*) AS total FROM users");
+                    $row = $stmt->fetch();
+                    $totalUsers = $row ? $row['total'] : 0;
+
+                    // Đếm tổng số sản phẩm
+                    // (Giả sử bạn có bảng 'products' trong database)
+                ?>
                 <div class="bg-white rounded-xl shadow p-4 flex items-center gap-3">
                     <i class="fa fa-users text-xl text-primary"></i>
                     <div>
-                        <div class="text-lg font-semibold">150</div>
+                        <div class="text-lg font-semibold"><?= htmlspecialchars($totalUsers) ?></div>
                         <div class="text-xs text-gray-500">Người dùng</div>
                     </div>
                 </div>

@@ -1,11 +1,11 @@
 <?php
-    $host = '127.0.0.1';
+    $host = 'localhost';
     $db   = 'rattatea_db';
     $user = 'root';
     $pass = '';
     $charset = 'utf8mb4';
 
-    $dsn = "mysql:host=$host;port=3306;dbname=$db;charset=$charset";
+    $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
 
     $options = [
         PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
@@ -15,6 +15,5 @@
     try {
         $pdo = new PDO($dsn, $user, $pass, $options);
     } catch (PDOException $e) {
-        // throw để file gọi xử lý
         throw new Exception('Database connection failed');
 }?>
