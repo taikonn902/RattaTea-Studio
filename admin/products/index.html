@@ -244,14 +244,14 @@
 
             <!-- ===== ADD PRODUCT FULL SCREEN MODAL ===== -->
             <!-- ===== PRODUCT MODAL ===== -->
-            <div id="productModal" class="fixed inset-0 z-50 hidden bg-black/40 scroll-y-auto">
+            <div id="productModal" class="fixed inset-0 z-50 hidden bg-black/40">
 
-                <div id="productModalBox" class="absolute inset-0 bg-gray-50
+                <div id="productModalBox" class="absolute inset-0 bg-gray-50 flex flex-col
                 translate-y-full opacity-0
                 transition-all duration-300 ease-out">
 
                     <!-- HEADER -->
-                    <div class="sticky top-0 bg-white border-b px-6 py-4
+                    <div class="sticky top-0 bg-white border-b px-6 py-4 z-10
                     flex items-center justify-between">
                         <h2 class="text-lg font-semibold">Thêm sản phẩm</h2>
                         <button id="closeProductModal" class="w-10 h-10 rounded-full bg-gray-100
@@ -260,64 +260,152 @@
                         </button>
                     </div>
 
+                    <!-- FORM CONTENT -->
                     <div class="flex-1 overflow-y-auto">
-                    <!-- FORM -->
-                    <form class="max-w-5xl mx-auto px-6 py-6 space-y-6">
+                        <form id="addProductForm" class="max-w-5xl mx-auto px-6 py-6 space-y-6">
 
-                        <!-- IMAGE PREVIEW -->
-                        <div>
-                            <div class="mt-2 flex items-start gap-4">
+                            <!-- IMAGE PREVIEW -->
+                            <div>
+                                <div class="mt-2 flex items-start gap-4">
 
-                                <div class="w-[100px] h-[100px] rounded-xl border bg-white
-                               overflow-hidden flex items-center justify-center">
-                                    <img id="productImagePreview" class="w-full h-full object-cover hidden">
-                                    <span id="imagePlaceholder" class="text-xs text-gray-400 text-center px-2">
-                                        Chưa có ảnh
-                                    </span>
+                                    <div class="w-[100px] h-[100px] rounded-xl border bg-white
+                                   overflow-hidden flex items-center justify-center">
+                                        <img id="productImagePreview" class="w-full h-full object-cover hidden">
+                                        <span id="imagePlaceholder" class="text-xs text-gray-400 text-center px-2">
+                                            Chưa có ảnh
+                                        </span>
+                                    </div>
+
+                                    <div class="flex-1 space-y-2">
+                                        <span id="imageName" class="block text-sm text-gray-500 truncate">
+                                            Chưa chọn ảnh
+                                        </span>
+
+                                        <label class="inline-flex items-center gap-2
+                                       px-4 py-2 rounded-lg
+                                       bg-primary text-white text-sm
+                                       cursor-pointer w-fit">
+                                            <i class="fa fa-image"></i>
+                                            Thêm ảnh
+                                            <input type="file" name="image" id="productImageInput" accept="image/*"
+                                                class="hidden">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- NAME + CATEGORY -->
+                            <div class="flex gap-4">
+                                <div class="w-[70%]">
+                                    <label class="text-sm font-medium">Tên sản phẩm</label>
+                                    <input type="text" name="product_name" required class="mt-1 w-full rounded-xl border px-4 py-2.5 text-sm
+                                      focus:outline-none focus:border-primary">
                                 </div>
 
-                                <div class="flex-1 space-y-2">
-                                    <span id="imageName" class="block text-sm text-gray-500 truncate">
-                                        Chưa chọn ảnh
-                                    </span>
-
-                                    <label class="inline-flex items-center gap-2
-                                   px-4 py-2 rounded-lg
-                                   bg-primary text-white text-sm
-                                   cursor-pointer w-fit">
-                                        <i class="fa fa-image"></i>
-                                        Thêm ảnh
-                                        <input type="file" id="productImageInput" accept="image/*" class="hidden">
+                                <div class="w-[30%]">
+                                    <label class="text-sm font-medium text-gray-700">
+                                        Loại sản phẩm
                                     </label>
+
+                                    <div class="relative mt-1" id="categorySelect">
+
+                                        <!-- SELECT BOX -->
+                                        <button type="button" class="w-full h-[36px]
+                       flex items-center justify-between
+                       rounded-lg border border-gray-300
+                       bg-white px-3 text-sm
+                       hover:border-gray-400
+                       focus:outline-none">
+
+                                            <span id="categorySelected" class="text-gray-400">
+                                                Chọn loại
+                                            </span>
+
+                                            <i class="fa fa-chevron-down text-xs text-gray-400"></i>
+                                        </button>
+
+                                        <!-- OPTIONS -->
+                                        <ul class="absolute left-0 right-0 mt-1
+                       bg-white border rounded-lg shadow-md
+                       max-h-48 overflow-y-auto
+                       hidden z-20">
+
+                                            <li data-value="1" class="px-3 py-2 text-sm cursor-pointer
+                           hover:bg-primary/10">
+                                                Trà sữa
+                                            </li>
+
+                                            <li data-value="2" class="px-3 py-2 text-sm cursor-pointer
+                           hover:bg-primary/10">
+                                                Cà phê
+                                            </li>
+                                        </ul>
+
+                                        <!-- REAL VALUE -->
+                                        <input type="hidden" name="category_id" required>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <!-- PRICE -->
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label class="text-sm font-medium">Giá</label>
+                                    <input type="number" name="price" required class="mt-1 w-full rounded-xl border px-4 py-2.5 text-sm
+                                      focus:outline-none focus:border-primary">
+                                </div>
+
+                                <div>
+                                    <label class="text-sm font-medium">Giá khuyến mãi</label>
+                                    <input type="number" name="discount_price" placeholder="Có thể để trống..." class="mt-1 w-full rounded-xl border px-4 py-2.5 text-sm
+                                      focus:outline-none focus:border-primary">
                                 </div>
                             </div>
-                        </div>
 
-                        <!-- NAME + CATEGORY -->
-                        <div class="flex gap-4">
-                            <div class="w-[70%]">
-                                <label class="text-sm font-medium">Tên sản phẩm</label>
-                                <input type="text" required class="mt-1 w-full rounded-xl border px-4 py-2.5 text-sm
-                                  focus:outline-none focus:border-primary">
+                            <!-- ===== COLORS SECTION ===== -->
+                            <div class="space-y-3">
+                                <label class="text-sm font-medium">Màu sắc</label>
+
+                                <div class="flex gap-3 max-w-md">
+                                    <select id="colorSelect" class="flex-1 rounded-lg border
+                                       px-3 py-2 text-sm
+                                       focus:outline-none focus:border-primary">
+                                        <option value="">-- Chọn màu --</option>
+                                        <option value="red">Đỏ</option>
+                                        <option value="blue">Xanh dương</option>
+                                        <option value="black">Đen</option>
+                                        <option value="white">Trắng</option>
+                                        <option value="yellow">Vàng</option>
+                                    </select>
+
+                                    <button type="button" id="addColorBtn" class="px-4 py-2 rounded-lg
+                                       bg-primary text-white text-sm">
+                                        Thêm
+                                    </button>
+                                </div>
+
+                                <div id="colorList" class="space-y-3"></div>
                             </div>
 
-                            <div class="w-[30%]">
+                            <!-- STATUS -->
+                            <div>
                                 <label class="text-sm font-medium text-gray-700">
-                                    Loại sản phẩm
+                                    Trạng thái
                                 </label>
 
-                                <div class="relative mt-1" id="categorySelect">
+                                <div class="relative mt-1" id="statusSelect">
 
                                     <!-- SELECT BOX -->
                                     <button type="button" class="w-full h-[36px]
-                   flex items-center justify-between
-                   rounded-lg border border-gray-300
-                   bg-white px-3 text-sm
-                   hover:border-gray-400
-                   focus:outline-none">
+                       flex items-center justify-between
+                       rounded-lg border border-gray-300
+                       bg-white px-3 text-sm
+                       hover:border-gray-400
+                       focus:outline-none">
 
-                                        <span id="categorySelected" class="text-gray-400">
-                                            Chọn loại
+                                        <span id="statusSelected" class="text-gray-400">
+                                            Chọn trạng thái
                                         </span>
 
                                         <i class="fa fa-chevron-down text-xs text-gray-400"></i>
@@ -325,134 +413,48 @@
 
                                     <!-- OPTIONS -->
                                     <ul class="absolute left-0 right-0 mt-1
-                   bg-white border rounded-lg shadow-md
-                   max-h-48 overflow-y-auto
-                   hidden z-20">
+                       bg-white border rounded-lg shadow-md
+                       max-h-40 overflow-y-auto
+                       hidden z-20">
 
                                         <li data-value="1" class="px-3 py-2 text-sm cursor-pointer
-                       hover:bg-primary/10">
-                                            Trà sữa
+                           hover:bg-primary/10">
+                                            Hiển thị
                                         </li>
 
-                                        <li data-value="2" class="px-3 py-2 text-sm cursor-pointer
-                       hover:bg-primary/10">
-                                            Cà phê
+                                        <li data-value="0" class="px-3 py-2 text-sm cursor-pointer
+                           hover:bg-primary/10">
+                                            Ẩn
                                         </li>
                                     </ul>
 
                                     <!-- REAL VALUE -->
-                                    <input type="hidden" name="category_id" required>
+                                    <input type="hidden" name="status" required>
                                 </div>
                             </div>
 
-                        </div>
-
-                        <!-- PRICE -->
-                        <div class="grid grid-cols-2 gap-4">
+                            <!-- DESCRIPTION -->
                             <div>
-                                <label class="text-sm font-medium">Giá</label>
-                                <input type="number" required class="mt-1 w-full rounded-xl border px-4 py-2.5 text-sm
-                                  focus:outline-none focus:border-primary">
+                                <label class="text-sm font-medium">Mô tả</label>
+                                <textarea name="description" rows="5" class="mt-1 w-full rounded-xl border px-4 py-2.5 text-sm
+                                     focus:outline-none focus:border-primary"></textarea>
                             </div>
 
-                            <div>
-                                <label class="text-sm font-medium">Giá khuyến mãi</label>
-                                <input type="number" placeholder="Có thể để trống..." class="mt-1 w-full rounded-xl border px-4 py-2.5 text-sm
-                                  focus:outline-none focus:border-primary">
-                            </div>
-                        </div>
-
-                        <!-- ===== COLORS SECTION ===== -->
-                        <div class="space-y-3">
-                            <label class="text-sm font-medium">Màu sắc</label>
-
-                            <div class="flex gap-3 max-w-md">
-                                <select id="colorSelect" class="flex-1 rounded-lg border
-                                   px-3 py-2 text-sm
-                                   focus:outline-none focus:border-primary">
-                                    <option value="">-- Chọn màu --</option>
-                                    <option value="red">Đỏ</option>
-                                    <option value="blue">Xanh dương</option>
-                                    <option value="black">Đen</option>
-                                    <option value="white">Trắng</option>
-                                    <option value="yellow">Vàng</option>
-                                </select>
-
-                                <button type="button" id="addColorBtn" class="px-4 py-2 rounded-lg
-                                   bg-primary text-white text-sm">
-                                    Thêm
-                                </button>
-                            </div>
-
-                            <div id="colorList" class="space-y-3"></div>
-                        </div>
-
-                        <!-- STATUS -->
-                        <div>
-                            <label class="text-sm font-medium text-gray-700">
-                                Trạng thái
-                            </label>
-
-                            <div class="relative mt-1" id="statusSelect">
-
-                                <!-- SELECT BOX -->
-                                <button type="button" class="w-full h-[36px]
-                   flex items-center justify-between
-                   rounded-lg border border-gray-300
-                   bg-white px-3 text-sm
-                   hover:border-gray-400
-                   focus:outline-none">
-
-                                    <span id="statusSelected" class="text-gray-400">
-                                        Chọn trạng thái
-                                    </span>
-
-                                    <i class="fa fa-chevron-down text-xs text-gray-400"></i>
-                                </button>
-
-                                <!-- OPTIONS -->
-                                <ul class="absolute left-0 right-0 mt-1
-                   bg-white border rounded-lg shadow-md
-                   max-h-40 overflow-y-auto
-                   hidden z-20">
-
-                                    <li data-value="1" class="px-3 py-2 text-sm cursor-pointer
-                       hover:bg-primary/10">
-                                        Hiển thị
-                                    </li>
-
-                                    <li data-value="0" class="px-3 py-2 text-sm cursor-pointer
-                       hover:bg-primary/10">
-                                        Ẩn
-                                    </li>
-                                </ul>
-
-                                <!-- REAL VALUE -->
-                                <input type="hidden" name="status" required>
-                            </div>
-                        </div>
-
-
-                        <!-- DESCRIPTION -->
-                        <div>
-                            <label class="text-sm font-medium">Mô tả</label>
-                            <textarea rows="5" class="mt-1 w-full rounded-xl border px-4 py-2.5 text-sm
-                                 focus:outline-none focus:border-primary"></textarea>
-                        </div>
-
-                        <!-- ACTION -->
-                        <div class="flex justify-end gap-3 pt-4 border-t">
-                            <button type="button" id="cancelProduct" class="px-6 py-2.5 rounded-xl border text-sm">
-                                Huỷ
-                            </button>
-                            <button type="submit" class="px-7 py-2.5 rounded-xl bg-primary text-white
-                               text-sm font-semibold">
-                                Lưu sản phẩm
-                            </button>
-                        </div>
-
-                    </form>
+                        </form>
                     </div>
+
+                    <!-- ACTION BUTTONS -->
+                    <div class="sticky bottom-0 bg-white border-t px-6 py-4 z-10
+                    flex justify-end gap-3">
+                        <button type="button" id="cancelProduct" class="px-6 py-2.5 rounded-xl border text-sm">
+                            Huỷ
+                        </button>
+                        <button type="button" id="submitProduct" class="px-7 py-2.5 rounded-xl bg-primary text-white
+                           text-sm font-semibold">
+                            Lưu sản phẩm
+                        </button>
+                    </div>
+
                 </div>
             </div>
 
@@ -500,6 +502,10 @@
 
 <!-- Script xử lý form thêm sản phẩm -->
 <script>
+    document.getElementById('submitProduct').addEventListener('click', () => {
+        document.getElementById('addProductForm').dispatchEvent(new Event('submit'));
+    });
+
     document.getElementById('addProductForm').addEventListener('submit', async function (e) {
         e.preventDefault();
 
